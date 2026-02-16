@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityCab Live Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar: Passenger Phones -->
+        <div class="sidebar left-sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fa-solid fa-users"></i> Passengers</h2>
+                <span id="passenger-count" class="badge">0</span>
+            </div>
+            <div id="passenger-phones-container" class="phones-grid">
+                <!-- Passenger phones injected here -->
+            </div>
+        </div>
+
+        <!-- Center: Map & Controls -->
+        <div class="main-content">
+            <div class="map-wrapper">
+                <div id="city-map"></div>
+                <div class="map-overlay-stats">
+                    <div class="stat-item"><i class="fa-solid fa-clock"></i> <span id="sim-time">12:00 PM</span></div>
+                    <div class="stat-item"><i class="fa-solid fa-check-circle"></i> Served: <span id="total-served">0</span></div>
+                    <div class="stat-item"><i class="fa-solid fa-user-clock"></i> Queue: <span id="queue-size">0</span></div>
+                </div>
+            </div>
+            
+            <div class="control-dock">
+                <button onclick="startSim()" class="btn btn-primary" id="start-btn"><i class="fa-solid fa-play"></i> Start</button>
+                <button onclick="addTaxi()" class="btn btn-secondary"><i class="fa-solid fa-taxi"></i> Add Taxi</button>
+                <button onclick="openPassengerModal()" class="btn btn-secondary"><i class="fa-solid fa-user-plus"></i> Add Passenger</button>
+                <button onclick="resetSim()" class="btn btn-danger"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+            </div>
+        </div>
+
+        <!-- Right Sidebar: Driver Phones -->
+        <div class="sidebar right-sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fa-solid fa-taxi"></i> Drivers</h2>
+                <span id="taxi-count" class="badge">0</span>
+            </div>
+            <div id="driver-phones-container" class="phones-grid">
+                <!-- Driver phones injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
