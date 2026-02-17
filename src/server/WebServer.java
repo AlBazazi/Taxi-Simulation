@@ -85,8 +85,7 @@ public class WebServer {
         server.setExecutor(Executors.newCachedThreadPool());
         server.start();
 
-        System.out.println("🚀 Web Server started on http://localhost:" + PORT);
-        System.out.println("📱 Open http://localhost:" + PORT + " in your browser");
+        System.out.println("Open http://localhost:" + PORT + " in your browser");
 
         // Start update thread
         startUpdateThread();
@@ -174,8 +173,7 @@ public class WebServer {
                 }
             }
 
-            // Rebuild passenger states completely to avoid stale data (Fixes "Phone Logic"
-            // bug)
+            // Rebuild passenger states completely to avoid stale data
             // 1. Add Waiting Passengers
             List<Passenger> waiting = bookingSystem.getWaitingPassengers();
             // Create a set of active IDs to cleanup stale ones
@@ -207,9 +205,7 @@ public class WebServer {
                         state.destination = p.getDestination();
                         state.status = "IN_RIDE";
                     }
-                } catch (Exception e) {
-                    // Ignore concurrent modification
-                }
+                } catch (Exception e) {}
             }
 
             // 3. Remove passengers who are no longer waiting OR in a taxi (i.e., Dropped
@@ -412,3 +408,4 @@ public class WebServer {
         }
     }
 }
+
